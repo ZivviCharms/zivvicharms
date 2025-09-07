@@ -1,0 +1,676 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zivvi Charms - Boutique</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+      body {
+        font-family: 'Poppins', sans-serif;
+        margin: 0;
+        padding: 0;
+        background: linear-gradient(135deg, #ffe6f0, #e6f0ff, #fff5e6);
+        background-size: 400% 400%;
+        animation: gradientShift 12s ease infinite;
+      }
+  
+      @keyframes gradientShift {
+        0% { background-position: 0% 50%; }
+        50% { background-position: 100% 50%; }
+        100% { background-position: 0% 50%; }
+      }
+  
+      header {
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4, #fbc2eb, #a1c4fd);
+        color: #fff;
+        padding: 25px;
+        text-align: center;
+        border-bottom-left-radius: 40px;
+        border-bottom-right-radius: 40px;
+        box-shadow: 0 6px 15px rgba(0,0,0,0.1);
+      }
+  
+      header h1 {
+        margin: 0;
+        font-size: 2.5rem;
+        font-weight: 600;
+      }
+  
+      header p {
+        margin: 8px 0 0;
+        font-size: 1.1rem;
+      }
+  
+      /* Categories */
+      .categories {
+        text-align: center;
+        margin: 20px 0;
+      }
+  
+      .categories h2 {
+        margin-bottom: 15px;
+        color: #ff6f91;
+        font-weight: 600;
+      }
+  
+      .category-list {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: 12px;
+      }
+  
+      .category-list button {
+        padding: 10px 18px;
+        border: none;
+        border-radius: 25px;
+        background: #ffb6c1;
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+        transition: all 0.3s;
+      }
+  
+      .category-list button:hover {
+        background: #ff6f91;
+        transform: scale(1.05);
+      }
+  
+      /* Search Bar */
+      .search-bar {
+        text-align: center;
+        margin: 15px 0 25px;
+      }
+  
+      .search-bar input {
+        padding: 12px;
+        width: 65%;
+        border-radius: 25px;
+        border: 2px solid #ffb6c1;
+        font-size: 1rem;
+      }
+  
+      /* Products */
+      .products {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 20px;
+        padding: 20px;
+      }
+  
+      .product {
+        background: #fff;
+        padding: 18px;
+        border-radius: 20px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        text-align: center;
+        width: 220px;
+        transition: transform 0.3s;
+      }
+  
+      .product:hover {
+        transform: translateY(-5px);
+      }
+  
+      .product img {
+        width: 100%;
+        border-radius: 15px;
+        margin-bottom: 12px;
+      }
+  
+      .product h3 {
+        margin: 10px 0 6px;
+        font-weight: 600;
+        color: #333;
+      }
+  
+      .product .price {
+        color: #ff6f91;
+        font-weight: bold;
+        margin-bottom: 8px;
+      }
+  
+      .product .stock {
+        font-size: 14px;
+        margin: 5px 0;
+        color: #666;
+      }
+  
+      .product button {
+        background: #a1c4fd;
+        color: white;
+        border: none;
+        padding: 8px 14px;
+        border-radius: 25px;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+  
+      .product button:hover {
+        background: #6a82fb;
+        transform: scale(1.05);
+      }
+  
+      /* Cart & Form */
+      .cart, .form {
+        background: white;
+        padding: 50px;
+        margin: 20px;
+        border-radius: 20px;
+        box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+        max-width: 500px;
+        margin-left: auto;
+        margin-right: auto;
+      }
+  
+      .cart h2, .form h2 {
+        margin-top: 0;
+        color: #ff6f91;
+      }
+  
+      .form input, .form textarea, .form select {
+        width: 100%;
+        padding: 12px;
+        margin: 10px 0;
+        border: 2px solid #ffb6c1;
+        border-radius: 12px;
+        font-size: 1rem;
+      }
+  
+      .form button {
+        background: #ffb6c1;
+        color: white;
+        border: none;
+        padding: 12px 24px;
+        border-radius: 25px;
+        font-weight: bold;
+        cursor: pointer;
+        transition: 0.3s;
+      }
+  
+      .form button:hover {
+        background: #ff6f91;
+        transform: scale(1.05);
+      }
+  
+      footer {
+        text-align: center;
+        padding: 20px;
+        background: linear-gradient(90deg, #ff9a9e, #fad0c4, #a1c4fd);
+        color: #fff;
+        margin-top: 30px;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+      }
+  
+      footer a {
+        color: #fff;
+        font-weight: bold;
+        text-decoration: none;
+      }
+    </style>
+  </head>
+  <!-- Top Navbar -->
+<header class="top-bar">
+  <h1 class="logo">✨ Zivvi Charms ✨</h1>
+  <div class="icons">
+    <span class="icon" onclick="toggleWishlist()">❤️</span>
+    <span class="icon" onclick="toggleCart()">🛒</span>
+  </div>
+</header>
+
+<!-- Cart Box (hidden initially) -->
+<div id="cart" class="cart-box">
+  <h2>🛒 My Cart</h2>
+  <ul id="cart-items"></ul>
+  <p id="cart-total">Total: ₹0</p>
+</div>
+
+<!-- Wishlist Box -->
+<div id="wishlist" class="wishlist-box">
+  <h2>❤️ My Wishlist</h2>
+  <ul id="wishlist-items"></ul>
+</div>
+
+<style>
+.wishlist-box {
+  background: #fff0f6;
+  border: 2px solid #ffb6c1;
+  border-radius: 20px;
+  padding: 15px;
+  max-width: 400px;
+  margin: 15px auto;
+  box-shadow: 0px 5px 15px rgba(255, 182, 193, 0.3);
+}
+.wishlist-btn {
+  border: none;
+  background: none;
+  font-size: 20px;
+  cursor: pointer;
+}
+</style>
+
+<script>
+let wishlist = [];
+
+function toggleWishlistItem(btn) {
+  const product = btn.closest(".product");
+  const name = product.dataset.name;
+  const price = parseInt(product.dataset.price);
+
+  // Check if already in wishlist
+  let index = wishlist.findIndex(i => i.name === name);
+  if (index === -1) {
+    wishlist.push({ name, price });
+    btn.textContent = "❤️"; // filled heart
+  } else {
+    wishlist.splice(index, 1);
+    btn.textContent = "🤍"; // empty heart
+  }
+  renderWishlist();
+}
+
+function renderWishlist() {
+  const wishList = document.getElementById("wishlist-items");
+  wishList.innerHTML = "";
+
+  wishlist.forEach(item => {
+    const li = document.createElement("li");
+    li.textContent = `${item.name} - ₹${item.price}`;
+    wishList.appendChild(li);
+  });
+}
+</script>
+
+<style>
+/* --- Navbar --- */
+.top-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 20px;
+  background: #fff0f6; /* pastel pink */
+  border-bottom: 2px solid #ffb6c1;
+  font-family: 'Poppins', sans-serif;
+}
+
+.logo {
+  font-size: 20px;
+  color: #ff4da6;
+}
+
+.icons {
+  display: flex;
+  gap: 15px;
+}
+
+.icon {
+  font-size: 24px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.icon:hover {
+  transform: scale(1.2);
+}
+
+/* --- Floating Boxes (Cart + Wishlist) --- */
+.cart-box, .wishlist-box {
+  display: none;
+  position: fixed;
+  top: 60px;
+  right: 20px;
+  background: #fff0f6;
+  border: 2px solid #ffb6c1;
+  border-radius: 20px;
+  padding: 15px;
+  width: 280px;
+  max-height: 350px;
+  overflow-y: auto;
+  box-shadow: 0px 5px 15px rgba(255, 182, 193, 0.3);
+  z-index: 999;
+}
+
+.cart-box h2, .wishlist-box h2 {
+  text-align: center;
+  font-size: 18px;
+  color: #ff4da6;
+  margin-bottom: 10px;
+}
+
+#cart-items li, #wishlist-items li {
+  background: #ffe6f0;
+  margin: 8px 0;
+  padding: 8px;
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #333;
+  box-shadow: 0px 2px 5px rgba(255, 105, 180, 0.2);
+}
+</style>
+
+<script>
+function toggleCart() {
+  document.getElementById("cart").style.display =
+    document.getElementById("cart").style.display === "block" ? "none" : "block";
+  document.getElementById("wishlist").style.display = "none"; // close wishlist
+}
+
+function toggleWishlist() {
+  document.getElementById("wishlist").style.display =
+    document.getElementById("wishlist").style.display === "block" ? "none" : "block";
+  document.getElementById("cart").style.display = "none"; // close cart
+}
+</script>
+
+  
+<body>
+
+  <header>
+      <img src="C:\Users\Jenifer\Desktop\Zivvi Charms\images\logo.jpg" class = "rectangle" alt="My Profile Picture" style="width: 900px; height: 400px; object-fit: cover;">
+    </div>
+    <h1>Zivvi Charms</h1>
+    <p>Accessories that Sparkle with You ✨</p>
+  </header>
+  
+
+ <!-- Categories -->
+<section class="categories">
+  <h2>Shop by Categories</h2>
+  <div class="category-list">
+    <button onclick="filterCategory('all')">All</button>
+    <button onclick="filterCategory('hairaccessories')">Hair Accessories</button>
+    <button onclick="filterCategory('sta')">Silk Thread Accessories</button>
+    <button onclick="filterCategory('bra')">Bracelets</button>
+    <button onclick="filterCategory('stat')">Stationery</button>
+  
+    
+  </div>
+</section>
+
+<!-- Search Bar -->
+<div class="search-bar">
+  <input type="text" id="searchInput" placeholder="Search products..." onkeyup="searchProducts()">
+</div>
+
+<section class="products">
+  <!-- Matt Finish -->
+  <div class="product" data-name="Matt Finish" data-price="25" data-qty="4" data-category="hairaccessories">
+    <img src="images/matt-finish.jpg" alt="Matt Finish">
+    <h3>Matt Finish</h3>
+    <p class="price">₹25 each</p>
+    <p class="stock">Available: 4</p>
+    <button onclick="addToCart(this)">Add to Cart</button>
+    <button class="cart-box" onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+
+  </div>
+
+  <!-- New Pinteresty -->
+  <div class="product" data-name="New Pinteresty" data-price="35" data-qty="4" data-category="hairaccessories">
+    <img src="images/pinteresty.jpg" alt="New Pinteresty">
+    <h3>New Pinteresty</h3>
+    <p class="price">₹35 each</p>
+    <p class="stock">Available: 4</p>
+    <button onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+  </div>
+
+  <!-- Bow Claw Mini -->
+  <div class="product" data-name="Bow Claw Mini" data-price="25" data-qty="6" data-category="hairaccessories">
+    <img src="images/bow.jpg" alt="Bow Claw Mini">
+    <h3>Bow Claw Mini</h3>
+    <p class="price">₹25 each</p>
+    <p class="stock">Available: 6</p>
+    <button onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+  </div>
+
+  <!-- Twin Petals -->
+  <div class="product" data-name="Twin Petals" data-price="35" data-qty="4" data-category="hairaccessories">
+    <img src="images/twin-petals.jpg" alt="Twin Petals">
+    <h3>Twin Petals</h3>
+    <p class="price">₹35 each</p>
+    <p class="stock">Available: 4</p>
+    <button onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+  </div>
+
+  <!-- Butterfly Clutch -->
+  <div class="product" data-name="Butterfly Clutch" data-price="50" data-qty="4" data-category="hairaccessories">
+    <img src="images/clutch.jpg" alt="Butterfly Clutch">
+    <h3>Butterfly Clutch</h3>
+    <p class="price">₹50 each</p>
+    <p class="stock">Available: 4</p>
+    <button onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+  </div>
+
+  <!-- Body Miniers -->
+  <div class="product" data-name="Body Miniers" data-price="10" data-qty="12" data-category="hairaccessories">
+    <img src="images/body-minie.jpg" alt="Body Miniers">
+    <h3>Body Miniers</h3>
+    <p class="price">₹10 each</p>
+    <p class="stock">Available: 12</p>
+    <button onclick="addToCart(this)">Add to Cart🛒</button>
+    <button class="wishlist-btn" onclick="toggleWishlistItem(this)">🤍</button>
+
+  </div>
+</section>
+
+<script>
+function filterCategory(category) {
+  const products = document.querySelectorAll(".product");
+  products.forEach(product => {
+    if (category === "all" || product.dataset.category === category) {
+      product.style.display = "block"; // show
+    } else {
+      product.style.display = "none"; // hide
+    }
+  });
+}
+
+function searchProducts() {
+  const input = document.getElementById("searchInput").value.toLowerCase();
+  const products = document.querySelectorAll(".product");
+  products.forEach(product => {
+    const name = product.dataset.name.toLowerCase();
+    product.style.display = name.includes(input) ? "block" : "none";
+  });
+}
+</script>
+<!-- Korean Style Cart -->
+<div id="cart" class="cart-box">
+  <h2 class="cart-title">🛒 My Cart</h2>
+  <ul id="cart-items"></ul>
+  <p id="cart-total">Total: ₹0</p>
+</div>
+
+<style>
+<!-- Korean Style Cart -->
+<div id="cart" class="cart-box">
+  <h2 class="cart-title">🛒 My Cart</h2>
+  <ul id="cart-items"></ul>
+  <p id="cart-total">Total: ₹0</p>
+</div>
+
+<style>
+.cart-box {
+  background: #fff0f6; /* pastel pink */
+  border: 2px solid #ffb6c1;
+  border-radius: 20px;
+  padding: 20px;
+  max-width: 400px;
+  margin: 20px auto;
+  box-shadow: 0px 5px 15px rgba(255, 182, 193, 0.3);
+  font-family: 'Poppins', sans-serif;
+}
+
+.cart-title {
+  text-align: center;
+  font-size: 20px;
+  color: #ff4da6;
+  margin-bottom: 15px;
+}
+
+#cart-items li {
+  background: #ffe6f0;
+  margin: 10px 0;
+  padding: 10px;
+  border-radius: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 15px;
+  color: #333;
+  box-shadow: 0px 2px 5px rgba(255, 105, 180, 0.2);
+}
+
+#cart-items div {
+  display: flex;
+  gap: 5px;
+}
+
+#cart-items button {
+  background: #ff80bf;
+  border: none;
+  color: white;
+  padding: 4px 8px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.3s;
+}
+
+#cart-items button:hover {
+  background: #ff4da6;
+}
+</style>
+
+<script>
+let cart = [];
+
+function addToCart(button) {
+  const product = button.closest(".product");
+  const name = product.dataset.name;
+  const price = parseInt(product.dataset.price);
+  let qty = parseInt(product.dataset.qty);
+
+  if (qty > 0) {
+    let item = cart.find(p => p.name === name);
+    if (item) {
+      item.qty++;
+    } else {
+      cart.push({ name, price, qty: 1 });
+    }
+    product.dataset.qty = qty - 1;
+    product.querySelector(".stock").textContent = "Available: " + (qty - 1);
+    renderCart();
+  } else {
+    alert("Out of stock!");
+  }
+}
+
+function renderCart() {
+  const cartList = document.getElementById("cart-items");
+  cartList.innerHTML = "";
+
+  let total = 0;
+
+  cart.forEach((item, index) => {
+    total += item.price * item.qty;
+
+    const li = document.createElement("li");
+    li.innerHTML = `
+      ${item.name} - ₹${item.price} × ${item.qty}
+      <div>
+        <button onclick="updateQty(${index}, 1)">➕</button>
+        <button onclick="updateQty(${index}, -1)">➖</button>
+        <button onclick="removeItem(${index})">❌</button>
+      </div>
+    `;
+    cartList.appendChild(li);
+  });
+
+  document.getElementById("cart-total").innerText = "Total: ₹" + total;
+  document.getElementById("cart-total-data").value = total;
+  document.getElementById("cart-data").value = cart.map(item => `${item.name} × ${item.qty} = ₹${item.price * item.qty}`).join(", ");
+}
+
+function updateQty(index, change) {
+  cart[index].qty += change;
+  if (cart[index].qty <= 0) {
+    cart.splice(index, 1);
+  }
+  renderCart();
+}
+
+function removeItem(index) {
+  cart.splice(index, 1);
+  renderCart();
+}
+</script>
+
+
+
+<!-- Customer Form -->
+<section class="form">
+  <h2>Customer Details</h2>
+  <form action= "https://formspree.io/f/xandlkoe" method="POST">
+    <label for="name">Full Name:</label>
+    <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+    <label for="phone">Phone Number:</label>
+    <input type="tel" id="phone" name="phone" placeholder="Enter your phone number" required>
+
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" placeholder="Enter your email">
+
+    <label for="address">Address:</label>
+    <textarea id="address" name="address" placeholder="Enter delivery address" rows="3"></textarea>
+    <!-- Payment Option -->
+    <select name="payment" id="payment-method" required>
+      <option value="COD">Cash on Delivery</option>
+      <option value="UPI">UPI Payment</option>
+    </select>
+
+    <!-- UPI QR Code -->
+    <div id="upi-qr" style="display:none; text-align:center; margin-top:10px;">
+      <p>Scan this QR to pay:</p>
+      <img src="C:\Users\Jenifer\Desktop\Zivvi Charms\images\upi-qr.png.jpg" alt="UPI QR Code" 
+           style="max-width:200px; border-radius:10px; border:2px solid #a855f7;">
+    </div>
+
+    <!-- Hidden cart fields -->
+    <input type="hidden" name="cart" id="cart-data">
+    <input type="hidden" name="total" id="cart-total-data">
+    <button type="submit">Place Order</button>
+  </form>
+</section>
+
+<footer>
+  <p>© 2025 Zivvi Charms | All Rights Reserved</p>
+  <p>
+    Follow us on 
+    <a href="https://www.instagram.com/zivvi_charmz?igsh=eXA5ZWtqMWhrMnV0" target="_blank" style="color:#ffd700; font-weight:bold; text-decoration:none;">
+      Zivvi Charms 📸
+    </a>
+  </p>
+</footer>
+
+<script>
+  // Show UPI QR when UPI is selected
+  document.getElementById("payment-method").addEventListener("change", function () {
+    document.getElementById("upi-qr").style.display = this.value === "UPI" ? "block" : "none";
+  });
+</script>
